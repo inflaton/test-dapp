@@ -3,7 +3,7 @@
   "version": "5.0.0",
   "description": "A simple dapp used in MetaMask e2e tests.",
   "engines": {
-    "node": ">= 12.0.0"
+    "node": "14.x"
   },
   "scripts": {
     "setup": "yarn install && yarn allow-scripts",
@@ -12,7 +12,8 @@
     "lint:misc": "prettier '**/*.json' '**/*.md' '!CHANGELOG.md' '**/*.yml' --ignore-path .gitignore",
     "lint": "yarn lint:eslint && yarn lint:misc --check",
     "lint:fix": "yarn lint:eslint --fix && yarn lint:misc --write",
-    "start": "webpack-dev-server",
+    "start": "node server.js",
+    "serve": "webpack-dev-server",
     "build": "webpack --mode production",
     "test": "yarn lint",
     "prepublishOnly": "yarn test && yarn build"
@@ -33,7 +34,9 @@
     "url": "https://github.com/MetaMask/test-dapp/issues"
   },
   "homepage": "https://metamask.github.io/test-dapp",
-  "dependencies": {},
+  "dependencies": {
+    "express": "^4.17.3"
+  },
   "devDependencies": {
     "@lavamoat/allow-scripts": "^1.0.6",
     "@metamask/auto-changelog": "^2.5.0",
